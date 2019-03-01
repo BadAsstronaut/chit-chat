@@ -1,0 +1,48 @@
+#main {
+    background-color: #375c96;
+    width: 80%;
+    min-width: 800px;
+    height: 80%;
+    min-height: 1000px;
+    margin: auto;
+}
+
+#chat {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+#chat-log {
+    background-color: #d4f9eb;
+    width: 70%;
+    height: 500px;
+    margin: 15px auto;
+    border: solid 3px #777;
+    display: block;
+    border-radius: 10px;
+}
+
+#username-wrapper {
+    background-color: #fff;
+    width: 65%;
+    height: 40px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#username-input {
+    text-align: center;
+    font-size: 16px;
+    flex: auto;
+    margin: 2px 5px;
+    border: none;
+}
+
+#username-input::placeholder {
+    text-align: center;
+    font-size: 16px;
+}
