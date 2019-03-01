@@ -2,10 +2,9 @@ FROM node:current-alpine
 
 WORKDIR /usr/app
 
-COPY package.json .
+COPY . .
 
-RUN npm i
-
-COPY src ./src/
+# TODO: Remove nodemon; dev only tool
+RUN npm i && npm i -g nodemon
 
 CMD ["npm", "start"]

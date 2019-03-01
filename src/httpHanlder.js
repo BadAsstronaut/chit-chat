@@ -37,4 +37,4 @@ const handler = async (req, res) => {
     res.end();
 };
 
-module.exports.handler = handler;
+module.exports = handler;

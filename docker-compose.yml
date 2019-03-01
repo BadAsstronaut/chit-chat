@@ -5,17 +5,18 @@ services:
     container_name: server
     build:
       context: .
+    command: nodemon index.js
     ports:
     - '3000:80'
     volumes:
     - ./:/usr/app
     - /usr/app/node_modules
 
-  # redis:
-  #   container_name: redis
-  #   image: redis:alpine
-  #   entrypoint: redis-server --appendonly yes
-  #   ports:
-  #   - '6379:6379'
-  #   volumes:
-  #   - ./redis-data:/data
+  redis:
+    container_name: redis
+    image: redis:alpine
+    entrypoint: redis-server --appendonly yes
+    ports:
+    - '6379:6379'
+    volumes:
+    - ./redis-data:/data

@@ -8,13 +8,13 @@ const submitChat = document.getElementById('submit-chat');
 const userName = document.getElementById('username');
 const userNameValidation = document.getElementById('username-validation');
 
-// const WebSocketHandler = (() => {
-//     const endpoint = 'ws://localhost:80/socket-server';
-//     const socket = new WebSocket(endpoint);
-//     socket.onopen(e => {
-
-//     });
-// })();
+const WebSocketHandler = (() => {
+    const endpoint = 'ws://localhost:3000';
+    const socket = new WebSocket(endpoint);
+    socket.addEventListener('open', e => {
+        debugger;
+    });
+})();
 
 const DomEventHandler = (() => {
     const submitChat = e => {
@@ -45,4 +45,3 @@ const DomEventHandler = (() => {
 textArea.addEventListener('keydown', DomEventHandler.textAreaKeyPress);
 
 submitChat.addEventListener('click', DomEventHandler.submitChat);
-
