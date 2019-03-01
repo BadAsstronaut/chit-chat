@@ -1,3 +1,0 @@
-FROM node:current-alpine
-
-

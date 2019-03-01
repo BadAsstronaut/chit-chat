@@ -1,10 +1,16 @@
 {
   "name": "chat-app-server",
   "version": "1.0.0",
-  "description": "Example web server for chat app",
+  "description": "Example chat app",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "socket.io": "^2.2.0"
   },
   "author": "Mickey",
   "license": "ISC"
