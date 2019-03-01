@@ -1,4 +1,4 @@
-#main {
+.main {
     background-color: #375c96;
     width: 80%;
     min-width: 800px;
@@ -7,24 +7,26 @@
     margin: auto;
 }
 
-#chat {
+.chat {
     width: 300px;
     height: 200px;
     margin: 0 auto;
     display: block;
 }
 
-#chat-log {
+.chat-log-container {
     background-color: #d4f9eb;
     width: 70%;
+    max-width: 800px;
     height: 500px;
     margin: 15px auto;
     border: solid 3px #777;
     display: block;
     border-radius: 10px;
+    position: relative;
 }
 
-#username-wrapper {
+.username-wrapper {
     background-color: #fff;
     width: 65%;
     height: 40px;
@@ -34,7 +36,7 @@
     border-radius: 10px;
 }
 
-#username-input {
+.username-input {
     text-align: center;
     font-size: 16px;
     flex: auto;
@@ -45,4 +47,40 @@
 #username-input::placeholder {
     text-align: center;
     font-size: 16px;
+}
+
+.chat-controls {
+    width: 92%;
+    max-width: 730px;
+    height: 80px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin: 10px;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    margin-left: -46%;
+}
+
+.chat-content {
+    resize: none;
+    text-size: 14px;
+    width: 85%;
+    height: 90%;
+    border: none;
+    background-color: #f9f9f9;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.chat-button {
+    position: absolute;
+    right: 20px;
+    height: 60px;
+    top: 50%;
+    margin-top: -30px;
+    border-radius: 5px;
+    border: thin solid #777;
+    background-color: #f9f9f9;
 }
