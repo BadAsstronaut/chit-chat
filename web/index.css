@@ -1,15 +1,20 @@
+/* Element styles */
 body {
     margin: 0;
     overflow: hidden;
 }
 
+/* base class styles */
 .main {
     background-color: #b3c2d8;
     width: 80%;
     min-width: 800px;
-    height: 80%;
-    min-height: 1000px;
+    height: 100%;
     margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -40%;
 }
 
 .chat {
@@ -40,6 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    border: solid 1px #777;
 }
 
 .username-input {
@@ -50,9 +56,20 @@ body {
     border: none;
 }
 
-#username-input::placeholder {
+.username-input::placeholder {
     text-align: center;
     font-size: 16px;
+}
+
+.username-input:focus {
+    outline: none;
+}
+
+.username-validation-error {
+    color: red;
+    display: block;
+    width: 65%;
+    margin: 3px auto;
 }
 
 .chat-controls {
@@ -67,17 +84,21 @@ body {
     bottom: 0;
     left: 50%;
     margin-left: -46%;
+    border: solid 1px #777;
 }
 
 .chat-content {
     resize: none;
     font-size: 14px;
     width: 85%;
-    height: 90%;
+    height: 85%;
     border: none;
     background-color: #f9f9f9;
-    padding-top: 5px;
-    padding-left: 10px;
+    margin-left: 15px;
+}
+
+.chat-content:focus {
+    outline: none;
 }
 
 .chat-button {
@@ -89,4 +110,9 @@ body {
     border-radius: 5px;
     border: thin solid #777;
     background-color: #f9f9f9;
+}
+
+/* utility class styles */
+.hidden {
+    display: none;
 }
