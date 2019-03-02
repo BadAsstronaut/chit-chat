@@ -11,14 +11,23 @@ const userNameValidation = document.getElementById('username-validation');
 const WebSocketHandler = (() => {
     const endpoint = 'ws://localhost:3000';
     const socket = new WebSocket(endpoint);
-    socket.addEventListener('open', e => {
+    socket.addEventListener('message', e => {
         debugger;
     });
+
+    const sendMessage = (msg) => {
+        socket.send(JSON.stringify(msg));
+    };
+
+    return {
+        sendMessage,
+    }
 })();
 
 const DomEventHandler = (() => {
     const submitChat = e => {
         e.preventDefault();
+
         if (!userName.value) {
             userNameValidation.classList.remove('hidden');
             window.setTimeout(() => {
@@ -27,7 +36,16 @@ const DomEventHandler = (() => {
             return;
         }
 
-        console.log('submit_event');
+        if (!textArea.value) {
+            return;
+        }
+
+        const message = {
+            user: userName.value,
+            message: textArea.value,
+        };
+
+        WebSocketHandler.sendMessage(message);
     };
 
     const textAreaKeyPress = e => {
