@@ -1,7 +1,6 @@
 'use strict';
 
 const http = require('http');
-const Ws = require('ws');
 
 const httpHandler = require('./src/httpHanlder');
 const webSocketHandler = require('./src/webSocketHandler');
