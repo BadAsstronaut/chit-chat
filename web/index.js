@@ -7,12 +7,37 @@ const textArea = document.getElementById('chat-content');
 const submitChat = document.getElementById('submit-chat');
 const userName = document.getElementById('username');
 const userNameValidation = document.getElementById('username-validation');
+const output = document.getElementById('chat-log-output');
+
+const mapMessagesToChat = messages => {
+    const elems = messages.map(msg => {
+        return `
+        <div class="message-wrapper">
+          <div class="message-meta">
+            <div class="meta-user">
+              ${msg.user}
+            </div>
+            <div class="meta-time">
+              ${new Date(msg.datetime).toLocaleString()}
+            </div>
+          </div>
+          <div class="message">
+            ${msg.message}
+          </div>
+        </div>
+        `;
+    });
+
+    output.innerHTML = elems.join('');
+    output.scrollTop = output.scrollHeight;
+};
 
 const WebSocketHandler = (() => {
     const endpoint = 'ws://localhost:3000';
     const socket = new WebSocket(endpoint);
+
     socket.addEventListener('message', e => {
-        debugger;
+        mapMessagesToChat(JSON.parse(e.data));
     });
 
     const sendMessage = (msg) => {
@@ -46,6 +71,7 @@ const DomEventHandler = (() => {
         };
 
         WebSocketHandler.sendMessage(message);
+        textArea.value = '';
     };
 
     const textAreaKeyPress = e => {
@@ -61,5 +87,4 @@ const DomEventHandler = (() => {
 })();
 
 textArea.addEventListener('keydown', DomEventHandler.textAreaKeyPress);
-
 submitChat.addEventListener('click', DomEventHandler.submitChat);

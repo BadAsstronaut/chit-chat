@@ -2,6 +2,7 @@
 body {
     margin: 0;
     overflow: hidden;
+    font-family: sans-serif;
 }
 
 /* base class styles */
@@ -70,6 +71,42 @@ body {
     display: block;
     width: 65%;
     margin: 3px auto;
+}
+
+.chat-log {
+    width: 90%;
+    margin: 10px auto;
+    height: 320px;
+    overflow: auto;
+}
+
+.message-wrapper {
+    width: 94%;
+    border: solid 1px #777;
+    margin: 5px auto;
+    border-radius: 2px;
+    background-color: #effff9;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.message-meta {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.meta-user {
+    flex: 1 0 auto;
+    font-weight: 700;
+}
+
+.meta-time {
+    display: flex;
+    font-size: 10px;
+    font-weight: 300;
+    color: #888;
 }
 
 .chat-controls {
