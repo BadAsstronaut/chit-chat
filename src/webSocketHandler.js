@@ -7,7 +7,6 @@ const datastore = require('./datastore');
 const chatLogKey = 'chat_log';
 
 const handleMessage = server => async rawData => {
-    console.log(rawData);
     const data = JSON.parse(rawData);
     const chatLogRaw = await datastore.get(chatLogKey);
     const chatLog = JSON.parse(chatLogRaw) || [];

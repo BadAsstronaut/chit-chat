@@ -5,14 +5,18 @@ const KEY_MAP = {
 
 const textArea = document.getElementById('chat-content');
 const submitChat = document.getElementById('submit-chat');
-const userName = document.getElementById('username');
-const userNameValidation = document.getElementById('username-validation');
+const username = document.getElementById('username');
+const usernameValidation = document.getElementById('username-validation');
 const output = document.getElementById('chat-log-output');
+const chatWrapper = document.getElementsByClassName('chat-controls')[0];
+const usernameWrapper = document.getElementsByClassName('username-wrapper')[0];
 
 const mapMessagesToChat = messages => {
     const elems = messages.map(msg => {
+        const isCurrentUser = username.value === msg.user;
+
         return `
-        <div class="message-wrapper">
+        <div class="message-wrapper${isCurrentUser ? ' current-user' : ''}">
           <div class="message-meta">
             <div class="meta-user">
               ${msg.user}
@@ -53,10 +57,10 @@ const DomEventHandler = (() => {
     const submitChat = e => {
         e.preventDefault();
 
-        if (!userName.value) {
-            userNameValidation.classList.remove('hidden');
+        if (!username.value || username.value.length > 10) {
+            usernameValidation.classList.remove('hidden');
             window.setTimeout(() => {
-                userNameValidation.classList.add('hidden');
+                usernameValidation.classList.add('hidden');
             }, 1200);
             return;
         }
@@ -66,7 +70,7 @@ const DomEventHandler = (() => {
         }
 
         const message = {
-            user: userName.value,
+            user: username.value,
             message: textArea.value,
         };
 
@@ -80,11 +84,29 @@ const DomEventHandler = (() => {
         }
     };
 
+    const onFocusWrapper = wrapper => () => {
+        wrapper.classList.add('focus');
+    };
+
+    const onBlurWrapper = wrapper => () => {
+        wrapper.classList.remove('focus');
+    };
+
     return {
-        textAreaKeyPress: textAreaKeyPress.bind(this),
-        submitChat: submitChat.bind(this),
+        textAreaKeyPress: textAreaKeyPress,
+        submitChat: submitChat,
+        onFocusWrapper,
+        onBlurWrapper,
     };
 })();
 
 textArea.addEventListener('keydown', DomEventHandler.textAreaKeyPress);
+textArea.addEventListener('focus', DomEventHandler.onFocusWrapper(chatWrapper));
+textArea.addEventListener('blur', DomEventHandler.onBlurWrapper(chatWrapper));
+
+username.addEventListener('focus', DomEventHandler.onFocusWrapper(usernameWrapper));
+username.addEventListener('blur', DomEventHandler.onBlurWrapper(usernameWrapper));
+
 submitChat.addEventListener('click', DomEventHandler.submitChat);
+submitChat.addEventListener('focus', DomEventHandler.onFocusWrapper(chatWrapper));
+submitChat.addEventListener('blur', DomEventHandler.onBlurWrapper(chatWrapper));
