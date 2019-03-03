@@ -6,7 +6,7 @@ services:
     build:
       context: .
     # Uncomment the following line AND line 10 in the Dockerfile to enable hot reloading
-    # command: nodemon index.js
+    command: nodemon index.js
     ports:
     - '3000:80'
     volumes:
