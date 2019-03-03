@@ -1,5 +1,7 @@
 # chit-chat
 
+This project started as a coding challenge for an employment opportunity. I learned a lot about making _simple_ design choices, and it inspired a post: <https://medium.com/@kyle.mickey/rethinking-dependence-on-dependencies-d6755ad9d006>
+
 ## Run it
 
 Make sure you have Docker and docker-compose installed. Then, from the root directory of the repo, run `docker-compose up`.
